@@ -134,17 +134,14 @@ h1{
 const SUPABASE_URL = "https://wpfiszzxlwkmaqcqmywa.supabase.co";
 const SUPABASE_KEY = "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN";
 
-function safe(v){
-  return v ? String(v) : "-";
-}
+function safe(v){ return v ? String(v) : "-"; }
 
 function row(label,value){
-  return `
-    <div class="row">
-      <div class="label">${label}</div>
-      <div class="value">${safe(value)}</div>
-    </div>
-  `;
+  return <div class="row"><div class="label">${label}</div><div class="value">${safe(value)}</div></div>;
+}
+
+function wait(ms){
+  return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 async function loadOrder(){
@@ -158,44 +155,50 @@ async function loadOrder(){
     return;
   }
 
-  try{
-    const res = await fetch(SUPABASE_URL + "/rest/v1/orders?id=eq." + encodeURIComponent(id) + "&select=*", {
-      method:"GET",
-      headers:{
-        "apikey": SUPABASE_KEY,
-        "Authorization": "Bearer " + SUPABASE_KEY
+  let data = null;
+
+  for(let i = 0; i < 4; i++){
+    try{
+      const res = await fetch(SUPABASE_URL + "/rest/v1/orders?id=eq." + encodeURIComponent(id) + "&select=*", {
+        method:"GET",
+        headers:{
+          "apikey": SUPABASE_KEY,
+          "Authorization": "Bearer " + SUPABASE_KEY
+        }
+      });
+
+      const json = await res.json();
+
+      if(json && json[0]){
+        data = json[0];
+        break;
       }
-    });
+    }catch(e){}
 
-    const data = await res.json();
-
-    if(!data || !data[0]){
-      content.className = "error";
-      content.innerText = "Bu ID ile eşleşen sipariş bulunamadı.";
-      return;
-    }
-
-    const o = data[0];
-
-    content.className = "";
-    content.innerHTML = `
-      ${row("Müşteri", o.name)}
-      ${row("Telefon", o.phone)}
-      ${row("Ürün", o.product)}
-      ${row("İlk koku", o.scent)}
-      ${row("Ek koku", o.extra_scent)}
-      ${row("Adet", o.quantity)}
-      ${row("Bölge / Şehir", o.region)}
-      ${row("Adres", o.address)}
-      ${row("Ek not", o.note)}
-      ${row("Sipariş durumu", o.status)}
-      ${row("Tarih", o.created_at)}
-      <div class="badge">VAERO Order ID: ${safe(o.id)}</div>
-    `;
-  }catch(err){
-    content.className = "error";
-    content.innerText = "Sipariş bilgileri yüklenirken hata oluştu.";
+    await wait(900);
   }
+
+  if(!data){
+    content.className = "error";
+    content.innerText = "Sipariş bilgileri yüklenirken hata oluştu. Lütfen sayfayı yenileyin.";
+    return;
+  }
+
+  content.className = "";
+  content.innerHTML = `
+    ${row("Müşteri", data.name)}
+    ${row("Telefon", data.phone)}
+    ${row("Ürün", data.product)}
+    ${row("İlk koku", data.scent)}
+    ${row("Ek koku", data.extra_scent)}
+    ${row("Adet", data.quantity)}
+    ${row("Bölge / Şehir", data.region)}
+    ${row("Adres", data.address)}
+    ${row("Ek not", data.note)}
+    ${row("Sipariş durumu", data.status)}
+    ${row("Tarih", data.created_at)}
+    <div class="badge">VAERO Order ID: ${safe(data.id)}</div>
+  `;
 }
 
 loadOrder();
