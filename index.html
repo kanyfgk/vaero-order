@@ -297,7 +297,7 @@ trackEvent("order_submit", {
   region: order.region
 });
 
-const orderLink = window.location.origin + window.location.pathname + "?order=" + orderId;
+const orderLink = window.location.origin + "/view.html?order=" + orderId;
 
 const msg = encodeURIComponent(
   "Merhaba, VAERO sipariş formunu doldurdum.\n\nSipariş detayım:\n" + orderLink
