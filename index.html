@@ -287,14 +287,14 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
 });
 
 const saved = await res.json();
-    console.log("SUPABASE RESPONSE:", saved);
-console.log("SUPABASE STATUS:", res.status);
-const orderId = saved && saved[0] ? saved[0].id : "";
-    if(!orderId){
-  alert("Sipariş kaydedildi ama sipariş ID gelmedi. Supabase orders tablosunda id kolonunu kontrol et.");
+console.log("SAVED DATA:", saved);
+
+const orderId = saved?.[0]?.id;
+
+if(!orderId){
+  alert("ID GELMEDİ → response boş dönüyor");
   return;
 }
-
 trackEvent("order_submit", {
   order_id: orderId,
   phone: order.phone,
