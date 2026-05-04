@@ -1,1 +1,304 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAERO | Sipariş</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  background:linear-gradient(135deg,#07111d,#18314a 55%,#384b61);
+  color:white;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 6%;
+}
+
+.card{
+  width:100%;
+  max-width:620px;
+  background:rgba(8,18,30,.78);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  padding:42px;
+  box-shadow:0 24px 80px rgba(0,0,0,.35);
+}
+
+.logo{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:42px;
+  letter-spacing:6px;
+  margin-bottom:10px;
+}
+
+.kicker{
+  color:#e6d7b0;
+  font-size:13px;
+  letter-spacing:1px;
+  margin-bottom:34px;
+}
+
+h1{
+  font-family:"Oswald",Arial,sans-serif;
+  font-size:42px;
+  line-height:115%;
+  margin-bottom:14px;
+}
+
+.intro{
+  color:rgba(255,255,255,.72);
+  font-size:16px;
+  line-height:27px;
+  margin-bottom:34px;
+}
+
+label{
+  display:block;
+  font-size:14px;
+  color:#d8dee8;
+  margin:22px 0 8px;
+}
+
+input,select,textarea{
+  width:100%;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.08);
+  color:white;
+  border-radius:12px;
+  padding:15px 16px;
+  font-size:15px;
+  outline:none;
+}
+
+select option{
+  color:#111;
+}
+
+textarea{
+  min-height:105px;
+  resize:vertical;
+}
+
+.small{
+  color:rgba(255,255,255,.5);
+  font-size:13px;
+  line-height:22px;
+  margin-top:8px;
+}
+
+.notice{
+  margin-top:28px;
+  padding:18px;
+  border-radius:16px;
+  background:rgba(230,215,176,.10);
+  color:#e7dcc0;
+  font-size:14px;
+  line-height:24px;
+}
+
+.btn{
+  width:100%;
+  margin-top:28px;
+  border:0;
+  border-radius:12px;
+  padding:18px 24px;
+  background:#e6d7b0;
+  color:#0b1620;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+.footer{
+  text-align:center;
+  margin-top:24px;
+  font-size:13px;
+  color:rgba(255,255,255,.45);
+}
+
+.footer a{
+  color:inherit;
+  text-decoration:underline;
+}
+
+@media(max-width:700px){
+  .wrap{padding:34px 5%}
+  .card{padding:30px 22px;border-radius:20px}
+  h1{font-size:34px}
+  .logo{font-size:36px}
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+  <div class="card">
+    <div class="logo">VAERO</div>
+    <div class="kicker">SİPARİŞ BAŞLANGICI</div>
+
+    <h1>İlk atmosferini seç.</h1>
+    <p class="intro">
+      Siparişini netleştirmek için gerekli bilgileri alıyoruz.
+      Sipariş WhatsApp üzerinden onaylanmadan kesinleşmez.
+    </p>
+
+    <form id="orderForm">
+      <label>Adınız ve Soyadınız *</label>
+      <input id="name" type="text" required placeholder="Ad Soyad">
+
+      <label>Telefon Numaranız *</label>
+      <input id="phone" type="tel" required placeholder="05xx xxx xx xx">
+      <div class="small">Sipariş ve iletişim bu numara üzerinden yapılacaktır.</div>
+
+      <label>Hangi ürünü istiyorsunuz? *</label>
+      <select id="product" required>
+        <option value="VAERO Cihaz - 1 koku dahil">VAERO Cihaz — 1 koku dahil</option>
+      </select>
+
+      <label>İlk kokunu seç *</label>
+      <select id="scent" required>
+        <option value="">Seçiniz</option>
+        <option>White Tea — temiz & ferah</option>
+        <option>Ocean — serin & rahatlatıcı</option>
+        <option>Cologne — klasik & güçlü</option>
+        <option>Sweet Flower — yumuşak & tatlı</option>
+        <option>Shangrila — taze & hafif</option>
+        <option>Kararsızım, siz önerin</option>
+      </select>
+
+      <label>Ek koku ister misiniz?</label>
+      <select id="extra_scent">
+        <option>Hayır</option>
+        <option>Evet, sipariş sonrası WhatsApp’tan yazacağım</option>
+      </select>
+
+      <label>Ürün adedi *</label>
+      <select id="quantity" required>
+        <option value="1">1 adet</option>
+        <option value="2">2 adet</option>
+        <option value="3">3 adet</option>
+        <option value="4">4 adet</option>
+        <option value="5+">5+ adet</option>
+      </select>
+
+      <label>Teslimat bölgesi / şehir *</label>
+      <input id="region" type="text" required placeholder="Örn: Mağusa, Lefkoşa, Girne">
+
+      <label>Teslimat adresiniz *</label>
+      <textarea id="address" required placeholder="Açık adresinizi yazın"></textarea>
+
+      <label>Ek not</label>
+      <textarea id="note" placeholder="Örn: Akşam teslim uygun olur / hediye olacak"></textarea>
+
+      <div class="notice">
+        İlk koku pakete dahildir. Toplam tutar ve teslimat süresi sipariş sonrası sizinle paylaşılır.
+        Bilgileriniz sadece sipariş ve teslimat için kullanılır.
+      </div>
+
+      <button class="btn" type="submit">Atmosferimi Başlat</button>
+    </form>
+
+    <div class="footer">
+      <a href="https://policy-html.vercel.app" target="_blank">Privacy & Terms</a> — VAERO
+    </div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL = "https://wpfiszzxlwkmaqcqmywa.supabase.co";
+const SUPABASE_KEY = "sb_publishable_eTspasegbb8PbX2hEGMD5w_ggrWRuYN";
+const WHATSAPP_NUMBER = "905391152765";
+
+function clean(v){
+  return String(v || "").trim();
+}
+
+async function trackEvent(eventName, meta = {}) {
+  fetch(SUPABASE_URL + "/rest/v1/events", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": SUPABASE_KEY,
+      "Authorization": "Bearer " + SUPABASE_KEY
+    },
+    body: JSON.stringify({
+      event_name: eventName,
+      page: "order",
+      meta: {
+        ...meta,
+        device: window.innerWidth <= 767 ? "mobile" : window.innerWidth <= 1024 ? "tablet" : "desktop",
+        width: window.innerWidth
+      }
+    }),
+    keepalive: true
+  }).catch(()=>{});
+}
+
+trackEvent("page_view", {page:"order"});
+
+document.getElementById("orderForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const order = {
+    name: clean(document.getElementById("name").value),
+    phone: clean(document.getElementById("phone").value),
+    product: clean(document.getElementById("product").value),
+    scent: clean(document.getElementById("scent").value),
+    extra_scent: clean(document.getElementById("extra_scent").value),
+    quantity: clean(document.getElementById("quantity").value),
+    region: clean(document.getElementById("region").value),
+    address: clean(document.getElementById("address").value),
+    note: clean(document.getElementById("note").value),
+    status: "new"
+  };
+
+  if(!order.name || !order.phone || !order.scent || !order.region || !order.address){
+    alert("Lütfen zorunlu alanları doldurun.");
+    return;
+  }
+
+  try{
+    await fetch(SUPABASE_URL + "/rest/v1/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": SUPABASE_KEY,
+        "Authorization": "Bearer " + SUPABASE_KEY
+      },
+      body: JSON.stringify(order)
+    });
+
+    trackEvent("order_submit", {
+      phone: order.phone,
+      scent: order.scent,
+      quantity: order.quantity,
+      region: order.region
+    });
+
+    const msg = encodeURIComponent(
+      "Merhaba, VAERO sipariş formunu doldurdum. Siparişimi netleştirmek istiyorum."
+    );
+
+    window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
+
+  }catch(err){
+    alert("Sipariş kaydedilirken bir sorun oluştu. Lütfen WhatsApp üzerinden yazın.");
+    window.location.href = "https://wa.me/" + WHATSAPP_NUMBER;
+  }
+});
+</script>
+
+</body>
+</html>
