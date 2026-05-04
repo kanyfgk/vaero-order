@@ -67,7 +67,7 @@ async function loadOrder(){
     console.log("ORDER ID:", id);
     let order = null;
 
-for (let i = 0; i < 6; i++) {
+for (let i = 0; i < 2; i++) {
   try {
     const res = await fetch(
       SUPABASE_URL + "/rest/v1/orders?id=eq." + encodeURIComponent(id) + "&select=*",
@@ -80,28 +80,22 @@ for (let i = 0; i < 6; i++) {
       }
     );
 
-    console.log("STATUS:", res.status);
-
     if (res.ok) {
       const data = await res.json();
-      console.log("DATA:", data);
 
       if (data && data[0]) {
         order = data[0];
         break;
       }
     }
-  } catch (err) {
-    console.log("RETRY ERROR:", err);
-  }
+  } catch(err) {}
 
-  content.innerText = "Sipariş bilgileri yükleniyor... (" + (i + 1) + "/6)";
   await new Promise(resolve => setTimeout(resolve, 1000));
 }
 
-if (!order) {
+if(!order){
   content.className = "error";
-  content.innerText = "Sipariş bilgileri henüz hazır değil. Lütfen birkaç saniye sonra sayfayı yenileyin.";
+  content.innerText = "Sipariş bilgileri hazırlanıyor. Lütfen sayfayı yenileyin.";
   return;
 }
 
