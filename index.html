@@ -275,7 +275,7 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
   const msg = encodeURIComponent(
     "Merhaba, VAERO sipariş formunu doldurdum.\n\nSipariş detayım:\n" + orderLink
   );
-
+await new Promise(resolve => setTimeout(resolve, 1000));
   window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
 });
 </script>
