@@ -64,6 +64,7 @@ async function loadOrder(){
   }
 
   try{
+    console.log("ORDER ID:", id);
     const res = await fetch(
       SUPABASE_URL + "/rest/v1/orders?id=eq." + encodeURIComponent(id) + "&select=*",
       {
@@ -75,7 +76,16 @@ async function loadOrder(){
       }
     );
 
-    const data = await res.json();
+    console.log("STATUS:", res.status);
+
+    if(!res.ok){
+  content.className = "error";
+  content.innerText = "API hata verdi";
+  return;
+}
+
+const data = await res.json();
+    console.log("DATA:", data);
 
     if(!data || !data[0]){
       content.className = "error";
