@@ -33,6 +33,15 @@ textarea{min-height:105px;resize:vertical}
 .footer{text-align:center;margin-top:24px;font-size:13px;color:rgba(255,255,255,.45)}
 .footer a{color:inherit;text-decoration:underline}
 @media(max-width:700px){.wrap{padding:34px 5%}.card{padding:30px 22px;border-radius:20px}h1{font-size:34px}.logo{font-size:36px}.scent-grid{grid-template-columns:1fr}}
+.scent-btn{
+  text-align:left;
+  cursor:pointer;
+  color:white;
+}
+.scent-btn.active{
+  border-color:rgba(230,215,176,.75);
+  background:rgba(230,215,176,.16);
+}
 </style>
 </head>
 
@@ -52,22 +61,41 @@ textarea{min-height:105px;resize:vertical}
       1 VAERO cihaz + 1 seçili koku dahildir. Sipariş WhatsApp üzerinden onaylanmadan kesinleşmez.
     </div>
 
-    <h2>Atmosfer kataloğu</h2>
-    <p class="muted">Kokunu yalnızca isimle değil, araç içinde yaratacağı hisse göre seç.</p>
+    <h2>Paketini seç</h2>
+<p class="muted">Cihazını ve dahil olan ilk atmosferini tek adımda belirle.</p>
 
-    <div class="scent-grid">
-  <div class="scent-card"><b>White Tea</b><span>Temiz, ferah, premium. En güvenli başlangıç.</span></div>
-  <div class="scent-card"><b>Ocean</b><span>Serin ve rahat. Hafif sürüş atmosferi.</span></div>
-  <div class="scent-card"><b>Cologne</b><span>Klasik, güçlü, net. Daha karakterli his.</span></div>
-  <div class="scent-card"><b>Sweet Flower</b><span>Yumuşak, sıcak, davetkar. Konfor hissi.</span></div>
-  <div class="scent-card"><b>Shangrila</b><span>Taze, sakin, hafif. Günlük kullanım için dengeli.</span></div>
-  <div class="scent-card"><b>Kararsızım</b><span>Aracına ve kullanımına göre önerelim.</span></div>
+<div class="panel">
+  <strong>1 VAERO cihaz + 1 atmosfer dahildir.</strong><br>
+  Ekstra atmosferler ilk siparişte avantajlıdır. Şimdi eklemezsen, ilk deneyiminden sonra sana özel yenileme fırsatı sunulur.
 </div>
 
-    <div class="panel">
-      <strong>İlk sipariş avantajı:</strong><br>
-      İlk siparişinde ekstra atmosferleri avantajlı ekleyebilirsin. Şimdi eklemezsen sorun değil; ilk deneyiminden sonra yenileme döneminde sana özel tekrar avantajı sunulur.
-    </div>
+<div class="scent-grid">
+  <button type="button" class="scent-card scent-btn active" data-scent="White Tea — temiz & ferah">
+    <b>White Tea</b><span>Temiz ve güvenli başlangıç.</span>
+  </button>
+
+  <button type="button" class="scent-card scent-btn" data-scent="Ocean — serin & rahatlatıcı">
+    <b>Ocean</b><span>Serin ve hafif sürüş hissi.</span>
+  </button>
+
+  <button type="button" class="scent-card scent-btn" data-scent="Cologne — klasik & güçlü">
+    <b>Cologne</b><span>Klasik, net, karakterli.</span>
+  </button>
+
+  <button type="button" class="scent-card scent-btn" data-scent="Sweet Flower — yumuşak & tatlı">
+    <b>Sweet Flower</b><span>Yumuşak ve davetkar.</span>
+  </button>
+
+  <button type="button" class="scent-card scent-btn" data-scent="Shangrila — taze & hafif">
+    <b>Shangrila</b><span>Taze, sakin, dengeli.</span>
+  </button>
+
+  <button type="button" class="scent-card scent-btn" data-scent="Kararsızım, siz önerin">
+    <b>Kararsızım</b><span>Bana öneri yapın.</span>
+  </button>
+</div>
+
+<input type="hidden" id="scent" value="White Tea — temiz & ferah">
 
     <form id="orderForm">
       <label>Adınız ve Soyadınız *</label>
@@ -83,23 +111,9 @@ textarea{min-height:105px;resize:vertical}
   <option value="2 cihaz (çift kullanım)">2 cihaz (çift kullanım — ikinci araç / hediye)</option>
 </select>
 
-<div class="small">
-İkinci araç, eş kullanımı veya hediye için tercih edilir. İlk siparişte daha avantajlıdır.
-</div>
       <div style="margin-top:14px;padding:14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.7);line-height:20px">
 İkinci araç, eş kullanımı veya hediye için mantıklı seçim. İlk siparişte eklemek daha avantajlıdır.
 </div>
-
-      <label>Dahil olan ilk kokunu seç *</label>
-      <select id="scent" required>
-        <option value="">Seçiniz</option>
-        <option>White Tea — temiz & ferah</option>
-        <option>Ocean — serin & rahatlatıcı</option>
-        <option>Cologne — klasik & güçlü</option>
-        <option>Sweet Flower — yumuşak & tatlı</option>
-        <option>Shangrila — taze & hafif</option>
-        <option>Kararsızım, siz önerin</option>
-      </select>
 
       <label>Ekstra koku avantajı</label>
       <select id="extra_scent">
@@ -155,7 +169,15 @@ const SUPABASE_KEY = "BURAYA_MEVCUT_SUPABASE_KEY";
 const WHATSAPP_NUMBER = "905391152765";
 
 function clean(v){ return String(v || "").trim(); }
-
+  
+document.querySelectorAll(".scent-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".scent-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("scent").value = btn.dataset.scent;
+  });
+});
+  
 document.getElementById("orderForm").addEventListener("submit", async function(e){
   e.preventDefault();
 
