@@ -42,6 +42,32 @@ textarea{min-height:105px;resize:vertical}
   border-color:rgba(230,215,176,.75);
   background:rgba(230,215,176,.16);
 }
+  .package-btn{
+  cursor:pointer;
+  text-align:left;
+}
+
+.package-btn.active{
+  border-color:rgba(230,215,176,.8);
+  background:rgba(230,215,176,.18);
+}
+
+.package-btn.recommended{
+  border:1px solid rgba(230,215,176,.6);
+  position:relative;
+}
+
+.package-btn.recommended::after{
+  content:"Önerilen";
+  position:absolute;
+  top:-10px;
+  right:12px;
+  font-size:11px;
+  background:#e6d7b0;
+  color:#0b1620;
+  padding:3px 8px;
+  border-radius:999px;
+}
 </style>
 </head>
 
@@ -97,11 +123,29 @@ textarea{min-height:105px;resize:vertical}
 
 <input type="hidden" id="scent" value="White Tea — temiz & ferah">
 <label>Paket seçimi *</label>
-<select id="product" required>
-  <option value="1 VAERO Cihaz + 1 atmosfer">1 VAERO Cihaz + 1 atmosfer</option>
-  <option value="2 VAERO Cihaz + 2 atmosfer">2 VAERO Cihaz + 2 atmosfer</option>
-  <option value="3+ cihaz için WhatsApp">3+ cihaz için teklif istiyorum</option>
-</select>
+<div class="scent-grid">
+
+  <button type="button" class="scent-card package-btn active" data-product="1 cihaz">
+    <b>1 Cihaz</b>
+    <span>Tek kullanım</span>
+  </button>
+
+  <button type="button" class="scent-card package-btn recommended" data-product="2 cihaz">
+    <b>2 Cihaz</b>
+    <span>Çift kullanım / hediye</span>
+  </button>
+
+  <button type="button" class="scent-card package-btn" data-product="3_plus">
+    <b>3+ Cihaz</b>
+    <span>Özel teklif</span>
+  </button>
+
+</div>
+
+<input type="hidden" id="product" value="1 cihaz">
+    <div class="small">
+Çoğu kullanıcı 2 cihaz seçer (çift kullanım / hediye)
+</div>
 
 <input type="hidden" id="quantity" value="1">
     <form id="orderForm">
@@ -111,10 +155,6 @@ textarea{min-height:105px;resize:vertical}
       <label>Telefon Numaranız *</label>
       <input id="phone" type="tel" required placeholder="05xx xxx xx xx">
       <div class="small">Sipariş ve iletişim bu numara üzerinden yapılacaktır.</div>
-
-      <div style="margin-top:14px;padding:14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.7);line-height:20px">
-İkinci araç, eş kullanımı veya hediye için mantıklı seçim. İlk siparişte eklemek daha avantajlıdır.
-</div>
 
       <label>Ekstra koku avantajı</label>
       <select id="extra_scent">
@@ -164,7 +204,13 @@ document.querySelectorAll(".scent-btn").forEach(btn=>{
     document.getElementById("scent").value = btn.dataset.scent;
   });
 });
-  
+  document.querySelectorAll(".package-btn").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".package-btn").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    document.getElementById("product").value = btn.dataset.product;
+  });
+});
 document.getElementById("orderForm").addEventListener("submit", async function(e){
   e.preventDefault();
 
