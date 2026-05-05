@@ -9,65 +9,29 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{min-height:100vh;background:linear-gradient(135deg,#07111d,#18314a 55%,#384b61);color:white;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 6%}
-.card{width:100%;max-width:760px;background:rgba(8,18,30,.80);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:42px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
-.logo{font-family:"Oswald",Arial,sans-serif;font-size:42px;letter-spacing:6px;margin-bottom:10px}
-.kicker{color:#e6d7b0;font-size:13px;letter-spacing:1px;margin-bottom:30px}
-h1,h2{font-family:"Oswald",Arial,sans-serif;line-height:115%}
-h1{font-size:42px;margin-bottom:14px}
-h2{font-size:30px;margin:34px 0 14px}
-.intro,.muted{color:rgba(255,255,255,.72);font-size:16px;line-height:27px}
-.panel{margin:26px 0;padding:20px;border-radius:18px;background:rgba(230,215,176,.10);border:1px solid rgba(230,215,176,.18)}
-.panel strong{color:#e6d7b0}
-.scent-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-.scent-card{padding:16px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10)}
-.scent-card b{display:block;color:#fff;margin-bottom:8px}
-.scent-card span{color:rgba(255,255,255,.62);font-size:14px;line-height:22px}
-label{display:block;font-size:14px;color:#d8dee8;margin:22px 0 8px}
-input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:white;border-radius:12px;padding:15px 16px;font-size:15px;outline:none}
-select option{color:#111}
-textarea{min-height:105px;resize:vertical}
-.small{color:rgba(255,255,255,.52);font-size:13px;line-height:22px;margin-top:8px}
-.notice{margin-top:28px;padding:18px;border-radius:16px;background:rgba(230,215,176,.10);color:#e7dcc0;font-size:14px;line-height:24px}
-.btn{width:100%;margin-top:28px;border:0;border-radius:12px;padding:18px 24px;background:#e6d7b0;color:#0b1620;font-size:16px;font-weight:600;cursor:pointer}
-.footer{text-align:center;margin-top:24px;font-size:13px;color:rgba(255,255,255,.45)}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:46px 5%}
+.card{width:100%;max-width:760px;background:rgba(8,18,30,.82);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:34px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
+.logo{font-family:"Oswald",Arial,sans-serif;font-size:42px;letter-spacing:6px;margin-bottom:8px}
+.kicker{color:#e6d7b0;font-size:12px;letter-spacing:1px;margin-bottom:24px}
+h1{font-family:"Oswald",Arial,sans-serif;font-size:40px;line-height:115%;margin-bottom:10px}
+.intro{color:rgba(255,255,255,.68);font-size:15px;line-height:24px;margin-bottom:26px}
+.block{margin-top:28px}
+.block-title{font-size:13px;color:#e6d7b0;letter-spacing:.5px;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{padding:15px;border-radius:15px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);color:white;text-align:left;cursor:pointer}
+.choice b{display:block;font-size:15px;margin-bottom:5px}
+.choice span{display:block;font-size:13px;color:rgba(255,255,255,.58);line-height:19px}
+.choice.active{border-color:rgba(230,215,176,.8);background:rgba(230,215,176,.16)}
+.choice.recommended{position:relative;border-color:rgba(230,215,176,.55)}
+.choice.recommended:after{content:"Önerilen";position:absolute;top:-10px;right:12px;background:#e6d7b0;color:#0b1620;font-size:11px;padding:3px 8px;border-radius:999px}
+input,textarea{width:100%;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.08);color:white;border-radius:13px;padding:15px 16px;font-size:15px;outline:none;margin-top:10px}
+textarea{min-height:95px;resize:vertical}
+.small{margin-top:10px;color:rgba(255,255,255,.48);font-size:13px;line-height:21px}
+.notice{margin-top:24px;padding:16px;border-radius:16px;background:rgba(230,215,176,.10);color:#e7dcc0;font-size:14px;line-height:23px}
+.btn{width:100%;margin-top:26px;border:0;border-radius:13px;padding:18px 24px;background:#e6d7b0;color:#0b1620;font-size:16px;font-weight:600;cursor:pointer}
+.footer{text-align:center;margin-top:22px;font-size:13px;color:rgba(255,255,255,.42)}
 .footer a{color:inherit;text-decoration:underline}
-@media(max-width:700px){.wrap{padding:34px 5%}.card{padding:30px 22px;border-radius:20px}h1{font-size:34px}.logo{font-size:36px}.scent-grid{grid-template-columns:1fr}}
-.scent-btn{
-  text-align:left;
-  cursor:pointer;
-  color:white;
-}
-.scent-btn.active{
-  border-color:rgba(230,215,176,.75);
-  background:rgba(230,215,176,.16);
-}
-  .package-btn{
-  cursor:pointer;
-  text-align:left;
-}
-
-.package-btn.active{
-  border-color:rgba(230,215,176,.8);
-  background:rgba(230,215,176,.18);
-}
-
-.package-btn.recommended{
-  border:1px solid rgba(230,215,176,.6);
-  position:relative;
-}
-
-.package-btn.recommended::after{
-  content:"Önerilen";
-  position:absolute;
-  top:-10px;
-  right:12px;
-  font-size:11px;
-  background:#e6d7b0;
-  color:#0b1620;
-  padding:3px 8px;
-  border-radius:999px;
-}
+@media(max-width:700px){.card{padding:28px 20px;border-radius:20px}h1{font-size:34px}.logo{font-size:36px}.grid{grid-template-columns:1fr}}
 </style>
 </head>
 
@@ -75,113 +39,70 @@ textarea{min-height:105px;resize:vertical}
 <div class="wrap">
   <div class="card">
     <div class="logo">VAERO</div>
-    <div class="kicker">SİPARİŞ BAŞLANGICI</div>
+    <div class="kicker">SİPARİŞ EKRANI</div>
 
-    <h1>İlk atmosferini seç.</h1>
-    <p class="intro">
-      VAERO yalnızca bir cihaz değil; araç içinde daha temiz, kontrollü ve kişisel bir atmosfer kurma sistemidir.
-    </p>
+    <h1>Atmosferini oluştur.</h1>
+    <p class="intro">Cihazını, ilk atmosferini ve teslimat bilgilerini seç. Sipariş WhatsApp’ta netleşir.</p>
 
-    <div class="panel">
-      <strong>Paket içeriği:</strong><br>
-      1 VAERO cihaz + 1 seçili koku dahildir. Sipariş WhatsApp üzerinden onaylanmadan kesinleşmez.
-    </div>
-
-    <h2>Paketini seç</h2>
-<p class="muted">Cihazını ve dahil olan ilk atmosferini tek adımda belirle.</p>
-
-<div class="panel">
-  <strong>1 VAERO cihaz + 1 atmosfer dahildir.</strong><br>
-  Ekstra atmosferler ilk siparişte avantajlıdır. Şimdi eklemezsen, ilk deneyiminden sonra sana özel yenileme fırsatı sunulur.
-</div>
-
-<div class="scent-grid">
-  <button type="button" class="scent-card scent-btn active" data-scent="White Tea — temiz & ferah">
-    <b>White Tea</b><span>Temiz ve güvenli başlangıç.</span>
-  </button>
-
-  <button type="button" class="scent-card scent-btn" data-scent="Ocean — serin & rahatlatıcı">
-    <b>Ocean</b><span>Serin ve hafif sürüş hissi.</span>
-  </button>
-
-  <button type="button" class="scent-card scent-btn" data-scent="Cologne — klasik & güçlü">
-    <b>Cologne</b><span>Klasik, net, karakterli.</span>
-  </button>
-
-  <button type="button" class="scent-card scent-btn" data-scent="Sweet Flower — yumuşak & tatlı">
-    <b>Sweet Flower</b><span>Yumuşak ve davetkar.</span>
-  </button>
-
-  <button type="button" class="scent-card scent-btn" data-scent="Shangrila — taze & hafif">
-    <b>Shangrila</b><span>Taze, sakin, dengeli.</span>
-  </button>
-
-  <button type="button" class="scent-card scent-btn" data-scent="Kararsızım, siz önerin">
-    <b>Kararsızım</b><span>Bana öneri yapın.</span>
-  </button>
-</div>
-
-<input type="hidden" id="scent" value="White Tea — temiz & ferah">
-<label>Paket seçimi *</label>
-<div class="scent-grid">
-
-  <button type="button" class="scent-card package-btn active" data-product="1 cihaz">
-    <b>1 Cihaz</b>
-    <span>Tek kullanım</span>
-  </button>
-
-  <button type="button" class="scent-card package-btn recommended" data-product="2 cihaz">
-    <b>2 Cihaz</b>
-    <span>Çift kullanım / hediye</span>
-  </button>
-
-  <button type="button" class="scent-card package-btn" data-product="3_plus">
-    <b>3+ Cihaz</b>
-    <span>Özel teklif</span>
-  </button>
-
-</div>
-
-<input type="hidden" id="product" value="1 cihaz">
-    <div class="small">
-Çoğu kullanıcı 2 cihaz seçer (çift kullanım / hediye)
-</div>
-
-<input type="hidden" id="quantity" value="1">
     <form id="orderForm">
-      <label>Adınız ve Soyadınız *</label>
-      <input id="name" type="text" required placeholder="Ad Soyad">
 
-      <label>Telefon Numaranız *</label>
-      <input id="phone" type="tel" required placeholder="05xx xxx xx xx">
-      <div class="small">Sipariş ve iletişim bu numara üzerinden yapılacaktır.</div>
-
-      <label>Ekstra koku avantajı</label>
-      <select id="extra_scent">
-        <option>Şimdilik ekstra istemiyorum</option>
-        <option>+1 ekstra koku avantajı istiyorum</option>
-        <option>+3 ekstra koku avantajı istiyorum</option>
-        <option>+5 ekstra koku avantajı istiyorum</option>
-        <option>5+ koku için WhatsApp’ta teklif isteyeceğim</option>
-      </select>
-      <div class="small">
-İlk siparişte ekstra atmosferler daha avantajlıdır. Şimdi eklemezsen, ilk deneyiminden sonra sana özel yenileme fırsatı sunulur.
-</div>
-
-      <label>Teslimat bölgesi / şehir *</label>
-      <input id="region" type="text" required placeholder="Örn: Mağusa, Lefkoşa, Girne">
-
-      <label>Teslimat adresiniz *</label>
-      <textarea id="address" required placeholder="Açık adresinizi yazın"></textarea>
-
-      <label>Ek not</label>
-      <textarea id="note" placeholder="Örn: Akşam teslim uygun olur / ikinci cihaz hediye olacak"></textarea>
-
-      <div class="notice">
-        Siparişiniz WhatsApp üzerinden netleştirilir. Toplam tutar, stok durumu, ekstra koku avantajı ve teslimat süresi sizinle paylaşılır.
+      <div class="block">
+        <div class="block-title">PAKET</div>
+        <div class="grid">
+          <button type="button" class="choice package-btn active" data-product="1 VAERO cihaz + 1 atmosfer" data-quantity="1">
+            <b>1 Cihaz</b><span>1 atmosfer dahil</span>
+          </button>
+          <button type="button" class="choice package-btn recommended" data-product="2 VAERO cihaz + 2 atmosfer" data-quantity="2">
+            <b>2 Cihaz</b><span>Çift kullanım / hediye</span>
+          </button>
+          <button type="button" class="choice package-btn" data-product="3+ VAERO cihaz" data-quantity="3+">
+            <b>3+ Cihaz</b><span>Özel teklif</span>
+          </button>
+        </div>
       </div>
 
-      <button class="btn" type="submit">Siparişimi WhatsApp’ta Netleştir</button>
+      <div class="block">
+        <div class="block-title">İLK ATMOSFER</div>
+        <div class="grid">
+          <button type="button" class="choice scent-btn active" data-scent="White Tea — temiz & ferah"><b>White Tea</b><span>Temiz başlangıç</span></button>
+          <button type="button" class="choice scent-btn" data-scent="Ocean — serin & rahatlatıcı"><b>Ocean</b><span>Serin & hafif</span></button>
+          <button type="button" class="choice scent-btn" data-scent="Cologne — klasik & güçlü"><b>Cologne</b><span>Net & karakterli</span></button>
+          <button type="button" class="choice scent-btn" data-scent="Sweet Flower — yumuşak & tatlı"><b>Sweet Flower</b><span>Yumuşak & sıcak</span></button>
+          <button type="button" class="choice scent-btn" data-scent="Shangrila — taze & hafif"><b>Shangrila</b><span>Sakin & dengeli</span></button>
+          <button type="button" class="choice scent-btn" data-scent="Kararsızım, siz önerin"><b>Kararsızım</b><span>Öneri istiyorum</span></button>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-title">EKSTRA ATMOSFER</div>
+        <div class="grid">
+          <button type="button" class="choice extra-btn active" data-extra="Şimdilik ekstra istemiyorum"><b>Yok</b><span>Sonra yenilerim</span></button>
+          <button type="button" class="choice extra-btn" data-extra="+1 ekstra koku avantajı istiyorum"><b>+1</b><span>İlk deneme</span></button>
+          <button type="button" class="choice extra-btn recommended" data-extra="+3 ekstra koku avantajı istiyorum"><b>+3</b><span>2–3 ay rahatlık</span></button>
+          <button type="button" class="choice extra-btn" data-extra="+5 ekstra koku avantajı istiyorum"><b>+5</b><span>Stok avantajı</span></button>
+        </div>
+        <div class="small">Şimdi eklemezsen, ilk deneyiminden sonra sana özel yenileme avantajı sunulur.</div>
+      </div>
+
+      <div class="block">
+        <div class="block-title">TESLİMAT</div>
+        <input id="name" type="text" required placeholder="Ad Soyad">
+        <input id="phone" type="tel" required placeholder="Telefon">
+        <input id="region" type="text" required placeholder="Bölge / Şehir">
+        <textarea id="address" required placeholder="Teslimat adresi"></textarea>
+        <textarea id="note" placeholder="Ek not (isteğe bağlı)"></textarea>
+      </div>
+
+      <input type="hidden" id="product" value="1 VAERO cihaz + 1 atmosfer">
+      <input type="hidden" id="quantity" value="1">
+      <input type="hidden" id="scent" value="White Tea — temiz & ferah">
+      <input type="hidden" id="extra_scent" value="Şimdilik ekstra istemiyorum">
+
+      <div class="notice">
+        Sipariş WhatsApp üzerinden netleştirilir. Stok, toplam tutar ve teslimat süresi size bildirilir.
+      </div>
+
+      <button class="btn" type="submit">WhatsApp’ta Tamamla</button>
     </form>
 
     <div class="footer">
@@ -192,25 +113,29 @@ textarea{min-height:105px;resize:vertical}
 
 <script>
 const SUPABASE_URL = "https://wpfiszzxlwkmaqcqmywa.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZmlzenp4bHdrbWFxY3FteXdhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY4MDUyMDEsImV4cCI6MjA5MjM4MTIwMX0.YBbH0KlkJ58Yxq3VK4jRxii4_OV4EJUMv4pj6eJSico";
+const SUPABASE_KEY = "BURAYA_MEVCUT_SUPABASE_KEY";
 const WHATSAPP_NUMBER = "905391152765";
 
 function clean(v){ return String(v || "").trim(); }
-  
-document.querySelectorAll(".scent-btn").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    document.querySelectorAll(".scent-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById("scent").value = btn.dataset.scent;
+
+function setupChoice(selector, hiddenId, dataName){
+  document.querySelectorAll(selector).forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      document.querySelectorAll(selector).forEach(b=>b.classList.remove("active"));
+      btn.classList.add("active");
+      document.getElementById(hiddenId).value = btn.dataset[dataName];
+
+      if(selector === ".package-btn"){
+        document.getElementById("quantity").value = btn.dataset.quantity;
+      }
+    });
   });
-});
-  document.querySelectorAll(".package-btn").forEach(btn=>{
-  btn.addEventListener("click", ()=>{
-    document.querySelectorAll(".package-btn").forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    document.getElementById("product").value = btn.dataset.product;
-  });
-});
+}
+
+setupChoice(".package-btn", "product", "product");
+setupChoice(".scent-btn", "scent", "scent");
+setupChoice(".extra-btn", "extra_scent", "extra");
+
 document.getElementById("orderForm").addEventListener("submit", async function(e){
   e.preventDefault();
 
@@ -227,8 +152,8 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
     status: "new"
   };
 
-  if(!order.name || !order.phone || !order.scent || !order.region || !order.address){
-    alert("Lütfen zorunlu alanları doldurun.");
+  if(!order.name || !order.phone || !order.region || !order.address){
+    alert("Lütfen teslimat bilgilerini doldurun.");
     return;
   }
 
@@ -254,7 +179,7 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
   const orderLink = window.location.origin + "/view.html?order=" + orderId;
 
   const msg = encodeURIComponent(
-    "Merhaba, VAERO sipariş formunu doldurdum.\n\nSipariş detayım:\n" + orderLink
+    "Merhaba, VAERO siparişimi oluşturdum.\n\nSipariş detayım:\n" + orderLink
   );
 
   await new Promise(resolve => setTimeout(resolve, 1000));
