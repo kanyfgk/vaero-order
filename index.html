@@ -96,7 +96,14 @@ textarea{min-height:105px;resize:vertical}
 </div>
 
 <input type="hidden" id="scent" value="White Tea — temiz & ferah">
+<label>Paket seçimi *</label>
+<select id="product" required>
+  <option value="1 VAERO Cihaz + 1 atmosfer">1 VAERO Cihaz + 1 atmosfer</option>
+  <option value="2 VAERO Cihaz + 2 atmosfer">2 VAERO Cihaz + 2 atmosfer</option>
+  <option value="3+ cihaz için WhatsApp">3+ cihaz için teklif istiyorum</option>
+</select>
 
+<input type="hidden" id="quantity" value="1">
     <form id="orderForm">
       <label>Adınız ve Soyadınız *</label>
       <input id="name" type="text" required placeholder="Ad Soyad">
@@ -104,12 +111,6 @@ textarea{min-height:105px;resize:vertical}
       <label>Telefon Numaranız *</label>
       <input id="phone" type="tel" required placeholder="05xx xxx xx xx">
       <div class="small">Sipariş ve iletişim bu numara üzerinden yapılacaktır.</div>
-
-      <label>Ürün seçimi *</label>
-<select id="product" required>
-  <option value="1 VAERO Cihaz - 1 koku dahil">1 VAERO Cihaz — 1 koku dahil</option>
-  <option value="2 cihaz (çift kullanım)">2 cihaz (çift kullanım — ikinci araç / hediye)</option>
-</select>
 
       <div style="margin-top:14px;padding:14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.7);line-height:20px">
 İkinci araç, eş kullanımı veya hediye için mantıklı seçim. İlk siparişte eklemek daha avantajlıdır.
@@ -126,20 +127,6 @@ textarea{min-height:105px;resize:vertical}
       <div class="small">
 İlk siparişte ekstra atmosferler daha avantajlıdır. Şimdi eklemezsen, ilk deneyiminden sonra sana özel yenileme fırsatı sunulur.
 </div>
-
-      <label>Ürün adedi *</label>
-      <select id="quantity" required>
-        <option value="1">1 adet</option>
-        <option value="2">2 adet</option>
-        <option value="3">3 adet</option>
-        <option value="4">4 adet</option>
-        <option value="5">5 adet</option>
-        <option value="10">10 adet</option>
-        <option value="20">20 adet</option>
-        <option value="30">30 adet</option>
-        <option value="40">40 adet</option>
-        <option value="50+">50+ adet</option>
-      </select>
 
       <label>Teslimat bölgesi / şehir *</label>
       <input id="region" type="text" required placeholder="Örn: Mağusa, Lefkoşa, Girne">
