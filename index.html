@@ -4,145 +4,39 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VAERO | Sipariş</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-
-body{
-  min-height:100vh;
-  background:linear-gradient(135deg,#07111d,#18314a 55%,#384b61);
-  color:white;
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
-}
-
-.wrap{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:60px 6%;
-}
-
-.card{
-  width:100%;
-  max-width:620px;
-  background:rgba(8,18,30,.78);
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:24px;
-  padding:42px;
-  box-shadow:0 24px 80px rgba(0,0,0,.35);
-}
-
-.logo{
-  font-family:"Oswald",Arial,sans-serif;
-  font-size:42px;
-  letter-spacing:6px;
-  margin-bottom:10px;
-}
-
-.kicker{
-  color:#e6d7b0;
-  font-size:13px;
-  letter-spacing:1px;
-  margin-bottom:34px;
-}
-
-h1{
-  font-family:"Oswald",Arial,sans-serif;
-  font-size:42px;
-  line-height:115%;
-  margin-bottom:14px;
-}
-
-.intro{
-  color:rgba(255,255,255,.72);
-  font-size:16px;
-  line-height:27px;
-  margin-bottom:34px;
-}
-
-label{
-  display:block;
-  font-size:14px;
-  color:#d8dee8;
-  margin:22px 0 8px;
-}
-
-input,select,textarea{
-  width:100%;
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.08);
-  color:white;
-  border-radius:12px;
-  padding:15px 16px;
-  font-size:15px;
-  outline:none;
-}
-
-select option{
-  color:#111;
-}
-
-textarea{
-  min-height:105px;
-  resize:vertical;
-}
-
-.small{
-  color:rgba(255,255,255,.5);
-  font-size:13px;
-  line-height:22px;
-  margin-top:8px;
-}
-
-.notice{
-  margin-top:28px;
-  padding:18px;
-  border-radius:16px;
-  background:rgba(230,215,176,.10);
-  color:#e7dcc0;
-  font-size:14px;
-  line-height:24px;
-}
-
-.btn{
-  width:100%;
-  margin-top:28px;
-  border:0;
-  border-radius:12px;
-  padding:18px 24px;
-  background:#e6d7b0;
-  color:#0b1620;
-  font-size:16px;
-  font-weight:600;
-  cursor:pointer;
-}
-
-.footer{
-  text-align:center;
-  margin-top:24px;
-  font-size:13px;
-  color:rgba(255,255,255,.45);
-}
-
-.footer a{
-  color:inherit;
-  text-decoration:underline;
-}
-
-@media(max-width:700px){
-  .wrap{padding:34px 5%}
-  .card{padding:30px 22px;border-radius:20px}
-  h1{font-size:34px}
-  .logo{font-size:36px}
-}
+body{min-height:100vh;background:linear-gradient(135deg,#07111d,#18314a 55%,#384b61);color:white;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
+.wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:60px 6%}
+.card{width:100%;max-width:760px;background:rgba(8,18,30,.80);border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:42px;box-shadow:0 24px 80px rgba(0,0,0,.35)}
+.logo{font-family:"Oswald",Arial,sans-serif;font-size:42px;letter-spacing:6px;margin-bottom:10px}
+.kicker{color:#e6d7b0;font-size:13px;letter-spacing:1px;margin-bottom:30px}
+h1,h2{font-family:"Oswald",Arial,sans-serif;line-height:115%}
+h1{font-size:42px;margin-bottom:14px}
+h2{font-size:30px;margin:34px 0 14px}
+.intro,.muted{color:rgba(255,255,255,.72);font-size:16px;line-height:27px}
+.panel{margin:26px 0;padding:20px;border-radius:18px;background:rgba(230,215,176,.10);border:1px solid rgba(230,215,176,.18)}
+.panel strong{color:#e6d7b0}
+.scent-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.scent-card{padding:16px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10)}
+.scent-card b{display:block;color:#fff;margin-bottom:8px}
+.scent-card span{color:rgba(255,255,255,.62);font-size:14px;line-height:22px}
+label{display:block;font-size:14px;color:#d8dee8;margin:22px 0 8px}
+input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:white;border-radius:12px;padding:15px 16px;font-size:15px;outline:none}
+select option{color:#111}
+textarea{min-height:105px;resize:vertical}
+.small{color:rgba(255,255,255,.52);font-size:13px;line-height:22px;margin-top:8px}
+.notice{margin-top:28px;padding:18px;border-radius:16px;background:rgba(230,215,176,.10);color:#e7dcc0;font-size:14px;line-height:24px}
+.btn{width:100%;margin-top:28px;border:0;border-radius:12px;padding:18px 24px;background:#e6d7b0;color:#0b1620;font-size:16px;font-weight:600;cursor:pointer}
+.footer{text-align:center;margin-top:24px;font-size:13px;color:rgba(255,255,255,.45)}
+.footer a{color:inherit;text-decoration:underline}
+@media(max-width:700px){.wrap{padding:34px 5%}.card{padding:30px 22px;border-radius:20px}h1{font-size:34px}.logo{font-size:36px}.scent-grid{grid-template-columns:1fr}}
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
   <div class="card">
     <div class="logo">VAERO</div>
@@ -150,9 +44,30 @@ textarea{
 
     <h1>İlk atmosferini seç.</h1>
     <p class="intro">
-      Siparişini netleştirmek için gerekli bilgileri alıyoruz.
-      Sipariş WhatsApp üzerinden onaylanmadan kesinleşmez.
+      VAERO yalnızca bir cihaz değil; araç içinde daha temiz, kontrollü ve kişisel bir atmosfer kurma sistemidir.
     </p>
+
+    <div class="panel">
+      <strong>Paket içeriği:</strong><br>
+      1 VAERO cihaz + 1 seçili koku dahildir. Sipariş WhatsApp üzerinden onaylanmadan kesinleşmez.
+    </div>
+
+    <h2>Atmosfer kataloğu</h2>
+    <p class="muted">Kokunu yalnızca isimle değil, araç içinde yaratacağı hisse göre seç.</p>
+
+    <div class="scent-grid">
+      <div class="scent-card"><b>White Tea</b><span>Temiz, ferah, premium. Günlük kullanım için en güvenli ve rafine seçim.</span></div>
+      <div class="scent-card"><b>Ocean</b><span>Serin, rahatlatıcı, açık hava hissi. Daha hafif ve sakin sürüşler için.</span></div>
+      <div class="scent-card"><b>Cologne</b><span>Klasik, güçlü, net. Daha maskülen ve belirgin atmosfer isteyenler için.</span></div>
+      <div class="scent-card"><b>Sweet Flower</b><span>Yumuşak, tatlı, sıcak. Daha konforlu ve davetkar bir iç ortam için.</span></div>
+      <div class="scent-card"><b>Shangrila</b><span>Taze, hafif, sakin. Temiz ama fazla baskın olmayan bir atmosfer için.</span></div>
+      <div class="scent-card"><b>Kararsızım</b><span>Aracın kullanımına ve istediğin hisse göre WhatsApp’ta öneri yapılır.</span></div>
+    </div>
+
+    <div class="panel">
+      <strong>İlk sipariş avantajı:</strong><br>
+      İlk siparişinde ekstra atmosferleri avantajlı ekleyebilirsin. Şimdi eklemezsen sorun değil; ilk deneyiminden sonra yenileme döneminde sana özel tekrar avantajı sunulur.
+    </div>
 
     <form id="orderForm">
       <label>Adınız ve Soyadınız *</label>
@@ -162,12 +77,21 @@ textarea{
       <input id="phone" type="tel" required placeholder="05xx xxx xx xx">
       <div class="small">Sipariş ve iletişim bu numara üzerinden yapılacaktır.</div>
 
-      <label>Hangi ürünü istiyorsunuz? *</label>
-      <select id="product" required>
-        <option value="VAERO Cihaz - 1 koku dahil">VAERO Cihaz — 1 koku dahil</option>
-      </select>
+      <label>Ürün seçimi *</label>
+<select id="product" required>
+  <option value="1 VAERO Cihaz - 1 koku dahil">1 VAERO Cihaz — 1 koku dahil</option>
+  <option value="2 cihaz (çift kullanım)">2 cihaz (çift kullanım — ikinci araç / hediye)</option>
+</select>
 
-      <label>İlk kokunu seç *</label>
+<div class="small">
+İkinci araç, eş kullanımı veya hediye için tercih edilir. İlk siparişte daha avantajlıdır.
+</div>
+      <div style="margin-top:14px;padding:14px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:13px;color:rgba(255,255,255,.7);line-height:20px">
+Çoğu kullanıcı ilk siparişte ikinci cihazı da ekler. 
+Aynı anda kurulum yapmak daha kolaydır ve sonradan tekrar siparişe göre daha avantajlı olur.
+</div>
+
+      <label>Dahil olan ilk kokunu seç *</label>
       <select id="scent" required>
         <option value="">Seçiniz</option>
         <option>White Tea — temiz & ferah</option>
@@ -178,25 +102,29 @@ textarea{
         <option>Kararsızım, siz önerin</option>
       </select>
 
-      <label>Ek koku ister misiniz?</label>
+      <label>Ekstra koku avantajı</label>
       <select id="extra_scent">
-        <option>Hayır</option>
-        <option>Evet, sipariş sonrası WhatsApp’tan yazacağım</option>
+        <option>Şimdilik ekstra istemiyorum</option>
+        <option>+1 ekstra koku avantajı istiyorum</option>
+        <option>+3 ekstra koku avantajı istiyorum</option>
+        <option>+5 ekstra koku avantajı istiyorum</option>
+        <option>5+ koku için WhatsApp’ta teklif isteyeceğim</option>
       </select>
+      <div class="small">Ekstra kokular ilk sipariş sırasında daha avantajlı sunulur. Böylece 2–3 aylık kullanımını önceden hazırlayabilirsin.</div>
 
       <label>Ürün adedi *</label>
-<select id="quantity" required>
-  <option value="1">1 adet</option>
-  <option value="2">2 adet</option>
-  <option value="3">3 adet</option>
-  <option value="4">4 adet</option>
-  <option value="5">5 adet</option>
-  <option value="10">10 adet</option>
-  <option value="20">20 adet</option>
-  <option value="30">30 adet</option>
-  <option value="40">40 adet</option>
-  <option value="50+">50+ adet</option>
-</select>
+      <select id="quantity" required>
+        <option value="1">1 adet</option>
+        <option value="2">2 adet</option>
+        <option value="3">3 adet</option>
+        <option value="4">4 adet</option>
+        <option value="5">5 adet</option>
+        <option value="10">10 adet</option>
+        <option value="20">20 adet</option>
+        <option value="30">30 adet</option>
+        <option value="40">40 adet</option>
+        <option value="50+">50+ adet</option>
+      </select>
 
       <label>Teslimat bölgesi / şehir *</label>
       <input id="region" type="text" required placeholder="Örn: Mağusa, Lefkoşa, Girne">
@@ -205,14 +133,13 @@ textarea{
       <textarea id="address" required placeholder="Açık adresinizi yazın"></textarea>
 
       <label>Ek not</label>
-      <textarea id="note" placeholder="Örn: Akşam teslim uygun olur / hediye olacak"></textarea>
+      <textarea id="note" placeholder="Örn: Akşam teslim uygun olur / ikinci cihaz hediye olacak"></textarea>
 
       <div class="notice">
-        İlk koku pakete dahildir. Toplam tutar ve teslimat süresi sipariş sonrası sizinle paylaşılır.
-        Bilgileriniz sadece sipariş ve teslimat için kullanılır.
+        Siparişiniz WhatsApp üzerinden netleştirilir. Toplam tutar, stok durumu, ekstra koku avantajı ve teslimat süresi sizinle paylaşılır.
       </div>
 
-      <button class="btn" type="submit">Atmosferimi Başlat</button>
+      <button class="btn" type="submit">Siparişimi WhatsApp’ta Netleştir</button>
     </form>
 
     <div class="footer">
@@ -223,12 +150,10 @@ textarea{
 
 <script>
 const SUPABASE_URL = "https://wpfiszzxlwkmaqcqmywa.supabase.co";
-const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndwZmlzenp4bHdrbWFxY3FteXdhIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3NjgwNTIwMSwiZXhwIjoyMDkyMzgxMjAxfQ.TBSxry2GrqCY83mwi9rsKgWVGjzDOfPNQpmvxUTzkPs";
+const SUPABASE_KEY = "BURAYA_MEVCUT_SUPABASE_KEY";
 const WHATSAPP_NUMBER = "905391152765";
 
-function clean(v){
-  return String(v || "").trim();
-}
+function clean(v){ return String(v || "").trim(); }
 
 document.getElementById("orderForm").addEventListener("submit", async function(e){
   e.preventDefault();
@@ -275,10 +200,10 @@ document.getElementById("orderForm").addEventListener("submit", async function(e
   const msg = encodeURIComponent(
     "Merhaba, VAERO sipariş formunu doldurdum.\n\nSipariş detayım:\n" + orderLink
   );
-await new Promise(resolve => setTimeout(resolve, 1000));
+
+  await new Promise(resolve => setTimeout(resolve, 1000));
   window.location.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
 });
 </script>
-
 </body>
 </html>
